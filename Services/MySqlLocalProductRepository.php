@@ -17,10 +17,10 @@ class MySqlLocalProductRepository implements IProductRepository
     /**
      * @throws DatabaseConnectionException
      */
-    public function __construct()
+    public function __construct($config)
     {
-        $databaseName = "shop_db";
-        $this->context = new mysqli(hostname: "localhost", username: "root", password: "", database: $databaseName);
+        $databaseName = $config['name'];
+        $this->context = new mysqli(hostname: $config['host'], username: $config['username'], password: $config['password'], database: $databaseName);
 
         if ($this->context->connect_errno) {
             throw new DatabaseConnectionException($databaseName, $this->context->connect_errno);

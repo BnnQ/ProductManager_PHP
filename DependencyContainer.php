@@ -24,7 +24,10 @@ class DependencyContainer
                 ->addTransientClass(EditProduct::class)
                 ->addTransientClass(DeleteProduct::class)
                 ->addSingletonImplementation(IProductRepository::class, MySqlLocalProductRepository::class)
-                ->addSingletonClass(MySqlLocalProductRepository::class);
+                ->addSingletonFactory(MySqlLocalProductRepository::class, function () {
+                    $config = parse_ini_file('appsettings.ini', true);
+                    return new MySqlLocalProductRepository($config['local_database']);
+                });
         }
 
         return self::$container;
