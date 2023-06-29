@@ -1,0 +1,19 @@
+{
+    "name": "1/product-manager",
+    "type": "project",
+    "require": {
+        "fivetwo/dependency-injection": "dev-develop",
+        "ext-mysqli": "*"
+    },
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "1\\ProductManager\\": "../ProductManager",
+            "Models\\": "Models/",
+            "Pages\\": "Pages/",
+            "Services\\": "Services/",
+            "Exceptions\\": "Exceptions/",
+            "Utils\\": "Utils/"
+        }
+    }
+}
