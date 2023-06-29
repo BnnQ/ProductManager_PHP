@@ -20,6 +20,10 @@ $component = DependencyContainer::getContainer()->get(ProductList::class);
     <div class="row">
         <a href="/ProductManager/Outlet.php?page=create" class="btn btn-success flex-grow-1">Create New</a>
     </div>
+    <?php
+    $numberOfProducts = count($component->productRepository->getAll());
+    echo "<div class='row text-center'>Number of products: $numberOfProducts</div>"
+    ?>
     <div class="row">
         <table class="table flex-grow-1 flex-shrink-0">
             <thead>
